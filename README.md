@@ -7,9 +7,9 @@ by Pavel Izmailov, Dmitrii Podoprikhin, Timur Garipov, Dmitry Vetrov and Andrew 
 
 # Introduction
 
-SWA is a simple DNN training method that can be used as a drop-in replacement for SGD with improved generalization and essentially no overhead. The key idea of SWA is to average multiple samples produced by SGD with a modified learning rate schedule. We use constant or cyclical learning rate schedule that force SGD to explore the set of points in the weight space corresponding to high-performing networks. We observe that SWA converges more quickly than SGD, and to wider optima that provide higher test accuracy. 
+SWA is a simple DNN training method that can be used as a drop-in replacement for SGD with improved generalization, faster convergence, and essentially no overhead. The key idea of SWA is to average multiple samples produced by SGD with a modified learning rate schedule. We use a constant or cyclical learning rate schedule that causes SGD to _explore_ the set of points in the weight space corresponding to high-performing networks. We observe that SWA converges more quickly than SGD, and to wider optima that provide higher test accuracy. 
 
-In this repo we only implement the constant learning rate schedule that we found to be most practical on CIFAR datasets.
+In this repo we implement the constant learning rate schedule that we found to be most practical on CIFAR datasets.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/14368801/37633888-89fdc05a-2bca-11e8-88aa-dd3661a44c3f.png" width=250>
@@ -35,7 +35,7 @@ Please cite our work if you find this approach useful in your research:
 
 # Usage
 
-The code in this repository implements both SWA and conventional SGD training, with examples on fthe CIFAR-10 and CIFAR-100 datasets.
+The code in this repository implements both SWA and conventional SGD training, with examples on the CIFAR-10 and CIFAR-100 datasets.
 
 To run SWA use the following command:
 

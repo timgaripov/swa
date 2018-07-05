@@ -59,7 +59,7 @@ Parameters:
 * ```PATH``` &mdash; path to the data directory
 * ```MODEL``` &mdash; DNN model name:
     - VGG16/VGG16BN/VGG19/VGG19BN
-    - PreResNet110
+    - PreResNet110/PreResNet164
     - WideResNet28x10
 * ```EPOCHS``` &mdash; number of training epochs (default: 200)
 * ```LR_INIT``` &mdash; initial learning rate (default: 0.1)
@@ -81,15 +81,18 @@ python3 train.py --dir=<DIR> \
 
 ## Examples
 
-To reproduce the results from the paper run (we use same parameters for both CIFAR-10 and CIFAR-100):
+To reproduce the results from the paper run (we use same parameters for both CIFAR-10 and CIFAR-100 except for PreResNet):
 ```bash
 #VGG16
 python3 train.py --dir=<DIR> --dataset=CIFAR100 --data_path=<PATH> --model=VGG16 --epochs=200 --lr_init=0.05 --wd=5e-4 # SGD
 python3 train.py --dir=<DIR> --dataset=CIFAR100 --data_path=<PATH> --model=VGG16 --epochs=300 --lr_init=0.05 --wd=5e-4 --swa --swa_start=161 --swa_lr=0.01 # SWA 1.5 Budgets
 
-#PreResNet110
-python3 train.py --dir=<DIR> --dataset=CIFAR100 --data_path=<PATH>  --model=PreResNet110 --epochs=150  --lr_init=0.1 --wd=3e-4 # SGD
-python3 train.py --dir=<DIR> --dataset=CIFAR100 --data_path=<PATH>  --model=PreResNet110 --epochs=225 --lr_init=0.1 --wd=3e-4 --swa --swa_start=126 --swa_lr=0.05 # SWA 1.5 Budgets
+#PreResNet
+python3 train.py --dir=<DIR> --dataset=CIFAR100 --data_path=<PATH>  --model=[PreResNet110 or PreResNet164] --epochs=150  --lr_init=0.1 --wd=3e-4 # SGD
+#CIFAR100
+python3 train.py --dir=<DIR> --dataset=CIFAR100 --data_path=<PATH>  --model=[PreResNet110 or PreResNet164] --epochs=225 --lr_init=0.1 --wd=3e-4 --swa --swa_start=126 --swa_lr=0.05 # SWA 1.5 Budgets
+#CIFAR10
+python3 train.py --dir=<DIR> --dataset=CIFAR10 --data_path=<PATH>  --model=[PreResNet110 or PreResNet164] --epochs=225 --lr_init=0.1 --wd=3e-4 --swa --swa_start=126 --swa_lr=0.01 # SWA 1.5 Budgets
 
 #WideResNet28x10 
 python3 train.py --dir=<DIR> --dataset=CIFAR100 --data_path=<PATH> --model=WideResNet28x10 --epochs=200 --lr_init=0.1 --wd=5e-4 # SGD
@@ -105,10 +108,11 @@ Test accuracy (%) of SGD and SWA on CIFAR-100 for different training budgets. Fo
 | DNN (Budget)              |  SGD         | SWA 1 Budget | SWA 1.25 Budgets | SWA 1.5 Budgets |
 | ------------------------- |:------------:|:------------:|:----------------:|:---------------:|
 | VGG16 (200)               | 72.55 ± 0.10 | 73.91 ± 0.12 | 74.17 ± 0.15     | 74.27 ± 0.25    |
-| PreResNet110 (150)        | 78.49 ± 0.36 | 79.77 ± 0.17 | 80.18 ± 0.23     | 80.35 ± 0.16    |
+| PreResNet110 (150)        | 76.77 ± 0.38 | 78.75 ± 0.16 | 78.91 ± 0.29     | 79.10 ± 0.21    |
+| PreResNet164 (150)        | 78.49 ± 0.36 | 79.77 ± 0.17 | 80.18 ± 0.23     | 80.35 ± 0.16    |
 | WideResNet28x10 (200)     | 80.82 ± 0.23 | 81.46 ± 0.23 | 81.91 ± 0.27     | 82.15 ± 0.27    |
 
-Below we show the convergence plot for SWA and SGD with PreResNet110 on CIFAR-100 and the corresponding learning rates. The dashed line illustrates the accuracy of individual models averaged by SWA.
+Below we show the convergence plot for SWA and SGD with PreResNet164 on CIFAR-100 and the corresponding learning rates. The dashed line illustrates the accuracy of individual models averaged by SWA.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/14368801/37633527-226bb2d6-2bc9-11e8-9be6-097c0dfe64ab.png" width=500>
@@ -122,7 +126,8 @@ Test accuracy (%) of SGD and SWA on CIFAR-10 for different training budgets.
 | DNN (Budget)              |  SGD         | SWA 1 Budget | SWA 1.25 Budgets | SWA 1.5 Budgets |
 | ------------------------- |:------------:|:------------:|:----------------:|:---------------:|
 | VGG16 (200)               | 93.25 ± 0.16 | 93.59 ± 0.16 | 93.70 ± 0.22     | 93.64 ± 0.18    |
-| PreResNet110 (150)        | 95.28 ± 0.10 | 95.56 ± 0.11 | 95.77 ± 0.04     | 95.83 ± 0.03    |
+| PreResNet110 (150)        | 95.03 ± 0.05 | 95.51 ± 0.10 | 95.65 ± 0.03     | 95.82 ± 0.03    |
+| PreResNet164 (150)        | 95.28 ± 0.10 | 95.56 ± 0.11 | 95.77 ± 0.04     | 95.83 ± 0.03    |
 | WideResNet28x10 (200)     | 96.18 ± 0.11 | 96.45 ± 0.11 | 96.64 ± 0.08     | 96.79 ± 0.05    |
  
 # References

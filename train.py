@@ -2,19 +2,20 @@ import argparse
 import os
 import sys
 import time
+
+import tabulate
 import torch
 import torch.nn.functional as F
 import torchvision
+
 import models
 import utils
-import tabulate
-
 
 parser = argparse.ArgumentParser(description='SGD/SWA training')
 parser.add_argument('--dir', type=str, default=None, required=True, help='training directory (default: None)')
 
 parser.add_argument('--dataset', type=str, default='CIFAR10', help='dataset name (default: CIFAR10)')
-parser.add_argument('--data_path', type=str, default=None, required=True, metavar='PATH',
+parser.add_argument('--data_path', type=str, default="./data", required=False, metavar='PATH',
                     help='path to datasets location (default: None)')
 parser.add_argument('--batch_size', type=int, default=128, metavar='N', help='input batch size (default: 128)')
 parser.add_argument('--num_workers', type=int, default=4, metavar='N', help='number of workers (default: 4)')
@@ -75,12 +76,11 @@ loaders = {
         pin_memory=True
     )
 }
-num_classes = max(train_set.train_labels) + 1
+num_classes = max(train_set.targets) + 1
 
 print('Preparing model')
 model = model_cfg.base(*model_cfg.args, num_classes=num_classes, **model_cfg.kwargs)
 model.cuda()
-
 
 if args.swa:
     print('SWA training')

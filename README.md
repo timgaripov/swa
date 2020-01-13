@@ -133,7 +133,7 @@ Test accuracy (%) of SGD and SWA on CIFAR-10 for different training budgets.
 # Other Implementations
 
 * Chainer Implementation: [github.com/chainer/models/tree/master/swa](https://github.com/chainer/models/tree/master/swa)
-* Keras/Tensorflow-Keras Implementation:: [github.com/simon-larsson/keras-swa](https://github.com/simon-larsson/keras-swa)
+* Keras/Tensorflow-Keras Implementation: [github.com/simon-larsson/keras-swa](https://github.com/simon-larsson/keras-swa)
 * PyTorch Contrib: [github.com/pytorch/contrib](https://github.com/pytorch/contrib)
  
 # References

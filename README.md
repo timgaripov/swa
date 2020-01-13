@@ -130,6 +130,12 @@ Test accuracy (%) of SGD and SWA on CIFAR-10 for different training budgets.
 | PreResNet164 (150)        | 95.28 ± 0.10 | 95.56 ± 0.11 | 95.77 ± 0.04     | 95.83 ± 0.03    |
 | WideResNet28x10 (200)     | 96.18 ± 0.11 | 96.45 ± 0.11 | 96.64 ± 0.08     | 96.79 ± 0.05    |
  
+# Other Implementations
+
+* Chainer Implementation: [github.com/chainer/models/tree/master/swa](https://github.com/chainer/models/tree/master/swa)
+* Keras Implementation by @simon-larsson: [github.com/simon-larsson/keras-swa](https://github.com/simon-larsson/keras-swa)
+* PyTorch Contrib: [github.com/pytorch/contrib](https://github.com/pytorch/contrib)
+ 
 # References
  
  Provided model implementations were adapted from

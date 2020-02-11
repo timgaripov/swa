@@ -18,7 +18,7 @@ In this repo we implement the constant learning rate schedule that we found to b
 </p>
 
 Please cite our work if you find this approach useful in your research:
-```latex
+```bibtex
 @article{izmailov2018averaging,
   title={Averaging Weights Leads to Wider Optima and Better Generalization},
   author={Izmailov, Pavel and Podoprikhin, Dmitrii and Garipov, Timur and Vetrov, Dmitry and Wilson, Andrew Gordon},

@@ -66,3 +66,6 @@ target/
 
 #Idea
 .idea*
+/data/
+/test/
+/.mypy_cache/

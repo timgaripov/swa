@@ -5,6 +5,8 @@ This repository contains a PyTorch implementation of the Stochastic Weight Avera
 
 by Pavel Izmailov, Dmitrii Podoprikhin, Timur Garipov, Dmitry Vetrov and Andrew Gordon Wilson.
 
+<b>Note: as of August 2020, SWA is now a core optimizer in the PyTorch library, and can be immediately used by anyone with PyTorch, without needing an external repo, as easily SGD or Adam.</b> Please see [this blog post](https://pytorch.org/blog/pytorch-1.6-now-includes-stochastic-weight-averaging/) introducing the native PyTorch implementation with examples.
+
 # Introduction
 
 SWA is a simple DNN training method that can be used as a drop-in replacement for SGD with improved generalization, faster convergence, and essentially no overhead. The key idea of SWA is to average multiple samples produced by SGD with a modified learning rate schedule. We use a constant or cyclical learning rate schedule that causes SGD to _explore_ the set of points in the weight space corresponding to high-performing networks. We observe that SWA converges more quickly than SGD, and to wider optima that provide higher test accuracy. 
